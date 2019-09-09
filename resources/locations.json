@@ -1,0 +1,156 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Locations API",
+    "description": "An API for querying Locations",
+    "contact": {
+      "name": "Vinay Bhalerao",
+      "url": "http://github.com/VinayBhalerao",
+      "email": "vinay@redhat.com"
+    },
+    "license": {
+      "name": "MIT License",
+      "url": "https://opensource.org/licenses/MIT"
+    },
+    "version": "0.9"
+  },
+  "paths": {
+    "/locations/{id}": {
+      "get": {
+        "tags": [
+          "locations"
+        ],
+        "summary": "Get locations",
+        "description": "Get locations",
+        "operationId": "Getlocations",
+        "responses": {
+          "200": {
+            "description": "locations having requested name",
+            "schema": {
+              "$ref": "#/definitions/locations"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "name",
+          "in": "path",
+          "description": "Name of locations to retrieve",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/locations/findByStatus/{id}": {
+      "get": {
+        "tags": [
+          "locations"
+        ],
+        "summary": "Get locations having status",
+        "description": "Get locations having status",
+        "operationId": "FindlocationsByStatus",
+        "responses": {
+          "200": {
+            "description": "List of locations having requested status",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/locations"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "status",
+          "in": "path",
+          "description": "Status of locations to retrieve",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "page",
+          "in": "query",
+          "description": "Number of page to retrieve",
+          "type": "number"
+        }
+      ]
+    },
+    "/locations": {
+      "get": {
+        "tags": [
+          "locations"
+        ],
+        "summary": "List locations within catalog",
+        "description": "List locations within catalog",
+        "operationId": "Listlocations",
+        "responses": {
+          "200": {
+            "description": "Array of locations",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/locations"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "page",
+          "in": "query",
+          "description": "Number of page to retrieve",
+          "type": "number"
+        }
+      ]
+    }
+  },
+  "tags": [
+    {
+      "name": "locations",
+      "description": "locations resource"
+    }
+  ],
+  "definitions": {
+    "locations": {
+      "properties": {
+        "name": {
+          "description": "Name of locations",
+          "type": "string"
+        },
+        "country": {
+          "description": "Origin country of locations",
+          "type": "string"
+        },
+        "type": {
+          "description": "Type of locations",
+          "type": "string"
+        },
+        "rating": {
+          "description": "Rating from customers",
+          "type": "number"
+        },
+        "status": {
+          "description": "Stock status",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "api-key": {
+      "type": "apiKey",
+      "name": "api-key",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "api-key": []
+    }
+  ]
+}
+
