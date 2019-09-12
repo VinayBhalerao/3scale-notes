@@ -1,1 +1,1 @@
-Everything releted to 3scale !!
+## Everything related to 3scale !!
