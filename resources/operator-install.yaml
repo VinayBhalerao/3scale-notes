@@ -1,0 +1,8 @@
+apiVersion: apps.3scale.net/v1alpha1
+kind: APIManager
+metadata:
+  name: example-apimanager
+spec:
+  productVersion: "2.6"
+  wildcardDomain: <wildcard domain> eg: apps.mtv-c0a7.open.redhat.com
+  resourceRequirementsEnabled: true
