@@ -54,14 +54,6 @@ oc get pods -n istio-operator -l name=istio-operator
 oc create -n istio-system -f https://gist.githubusercontent.com/PhilipGough/3ae01b461344c17e9ccc3d01ff9b575d/raw/d6e62197f861b9c869268a12e61a74fa6d599f01/cp.yml
 ```
 
-If `Pilot` deployment fails, change the resource memory to `10M`. Line 135. Edit the deploymentConfig yaml.
-
-```
-resources:
-requests:
-  cpu: 500m
-  memory: 10M
-```
 
 ```
 oc get cm -n istio-system istio -o jsonpath='{.data.mesh}' | grep disablePolicyChecks
